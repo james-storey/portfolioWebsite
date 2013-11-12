@@ -43,19 +43,19 @@ var handleKey = {
 	},
 
 	update: function() {
-		if(hold["w"] === true)
+		if(this.hold["w"] === true)
 		{
 			// move forward
 		}
-		if(hold["s"] === true)
+		if(this.hold["s"] === true)
 		{
 			// move backward
 		}
-		if(hold["a"] === true)
+		if(this.hold["a"] === true)
 		{
 			// move left
 		}
-		if(hold["d"] === true)
+		if(this.hold["d"] === true)
 		{
 			// move right
 		}
@@ -78,7 +78,7 @@ var init = function () {
 
 	var lights = sceneLights();
 
-	renderer = new THREE.WebGLRenderer();
+	renderer = Detector.webgl? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight );
 
 	document.body.appendChild(renderer.domElement);
