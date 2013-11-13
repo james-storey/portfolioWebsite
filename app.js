@@ -50,18 +50,18 @@ var playerInit = function ( my ) {
 	// public
 
 	that.update = function (){
-		var rc = new THREE.Raycaster(camera.position, -camera.up, 0, 4);
+		var rc = new THREE.Raycaster(camera.position, new THREE.Vector3( 0, -1, 0 ), 0, 100);
 		handleKey.update();
-		if(rc.intersectObject(sceneGeo, true)){
+		if(rc.intersectObject(sceneGeo, false)){
 			velocity = 0;
 		}
 		else{
 			if(velocity < 10){
-				velocity += 0.1; 
+				velocity += 0.01;
 			}
 		}
 
-		camera.translateY(velocity);
+		camera.translateY(-velocity);
 	}
 
 	return that;
@@ -110,11 +110,19 @@ var init = function () {
 	renderer = Detector.webgl? new THREE.WebGLRenderer() : new THREE.CanvasRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight );
 
-	document.body.appendChild(renderer.domElement);
-	document.body.requestPointerLock = 	document.body.requestPointerLock ||
-										document.body.mozRequestPointerLock ||
-										document.body.webkitRequestPointerLock;
-	document.body.requestPointerLock();
+	var viewport = renderer.domElement
+	document.body.appendChild(viewport);
+
+
+	viewport.requestPointerLock = (function () {
+		return 	viewport.webkitRequestPointerLock ||
+				viewport.mozRequestPointerlock ||
+				viewport.requestPointerLock;
+	})();
+	viewport.addEventListener("click", function (event) {
+		viewport.requestPointerLock();
+	}, false);
+	
 	player = playerInit();
 }
 
