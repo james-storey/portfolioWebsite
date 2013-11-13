@@ -1,8 +1,71 @@
 var camera, scene, renderer;
 var sceneGeo;
-
+var player;
 var pallete = [0xede1c0, 0xfacf4d, 0xe8a048, 0x382d2c, 0x232f4f, 0xab97b0];
 
+var playerInit = function ( my ) {
+	var that, handleKey, velocity;
+	my = my || {};
+	// private
+
+	handleKey = {
+		hold: {},
+
+		down: function(event) {
+			handleKey.hold[event.keyCode] = true;
+		},
+
+		up: function(event) {
+			handleKey.hold[event.keyCode] = false;
+		},
+
+		update: function() {
+
+			if(handleKey.hold["W".charCodeAt(0)] === true)
+			{
+				// move forward
+				camera.translateZ(-0.1);
+			}
+			if(handleKey.hold["S".charCodeAt(0)] === true)
+			{
+				// move backward
+				camera.translateZ(0.1);
+			}
+			if(handleKey.hold["A".charCodeAt(0)] === true)
+			{
+				camera.translateX(-0.1);
+			}
+			if(handleKey.hold["D".charCodeAt(0)] === true)
+			{
+				camera.translateX(0.1);
+			}
+		}
+	};
+
+	document.onkeydown = handleKey.down;
+	document.onkeyup = handleKey.up;
+	velocity = 0;
+
+	that = {};
+	// public
+
+	that.update = function (){
+		var rc = new THREE.Raycaster(camera.position, -camera.up, 0, 4);
+		handleKey.update();
+		if(rc.intersectObject(sceneGeo, true)){
+			velocity = 0;
+		}
+		else{
+			if(velocity < 10){
+				velocity += 0.1; 
+			}
+		}
+
+		camera.translateY(velocity);
+	}
+
+	return that;
+}
 
 var sceneGeometry = function() {
 	var cube = new THREE.Object3D();
@@ -31,47 +94,13 @@ var sceneLights = function() {
 };
 
 
-var handleKey = {
-	hold: {},
-
-	down: function(event) {
-		hold[event.keyCode] = true;
-	},
-
-	up: function(event) {
-		hold[event.keyCode] = false;
-	},
-
-	update: function() {
-		if(this.hold["w"] === true)
-		{
-			// move forward
-		}
-		if(this.hold["s"] === true)
-		{
-			// move backward
-		}
-		if(this.hold["a"] === true)
-		{
-			// move left
-		}
-		if(this.hold["d"] === true)
-		{
-			// move right
-		}
-	}
-};
-
-var updatePlayer = {
-	
-}
 
 
 var init = function () {
 	scene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000);
-	camera.position.z = 20;
+	camera.translateZ(20);
 	scene.add( camera );
 
 	sceneGeo = sceneGeometry();
@@ -82,14 +111,16 @@ var init = function () {
 	renderer.setSize(window.innerWidth, window.innerHeight );
 
 	document.body.appendChild(renderer.domElement);
-	document.onkeydown = handleKey.down;
-	document.onkeyup = handleKey.up;
+	document.body.requestPointerLock = 	document.body.requestPointerLock ||
+										document.body.mozRequestPointerLock ||
+										document.body.webkitRequestPointerLock;
+	document.body.requestPointerLock();
+	player = playerInit();
 }
 
 var update = function() {
 	requestAnimationFrame(update);
-	sceneGeo.rotateY(-0.01);
-	handleKey.update();
+	player.update();
 	render();
 }
 
