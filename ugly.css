@@ -1,9 +1,21 @@
 
-h1
+body
 {
     font-family: 'Open Sans Condensed', sans-serif;
-    margin-left:auto;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+}
+
+span.header
+{
+    font-size: 3.5em;
+    margin-left:1.5em;
     width:90%;
+}
+span.contact
+{
+    font-size: 1em;
 }
 
 div.bar
@@ -19,9 +31,13 @@ span.imgLink
 {
     margin-left: 30px;
     margin-right: 30px;
+    
+
+    text-align:left;
+    vertical-align: middle;
     position: relative;
     
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 span.imgLink img
@@ -32,6 +48,13 @@ span.imgLink img
 span.imgLink a:hover img
 {
 
+}
+
+span.textIcon
+{
+
+    color:#000;
+    font-size: 2em;
 }
 
 div.content
