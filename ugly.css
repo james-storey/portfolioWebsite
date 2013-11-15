@@ -7,6 +7,12 @@ body
     padding:0;
 }
 
+.changedirection {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+
 span.header
 {
     font-size: 3.5em;
@@ -15,7 +21,11 @@ span.header
 }
 span.contact
 {
+    position: absolute;
     font-size: 1em;
+    right: 5em;
+    margin-top: 3.75em;
+    letter-spacing: 0.3em;
 }
 
 div.bar
