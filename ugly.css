@@ -1,0 +1,50 @@
+
+h1
+{
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-left:auto;
+    width:90%;
+}
+
+div.bar
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    /*overflow:hidden;*/
+    height: 150px;
+}
+
+span.imgLink
+{
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    
+    overflow: hidden; 
+}
+
+span.imgLink img
+{
+    position:relative;
+}
+
+span.imgLink a:hover img
+{
+
+}
+
+div.content
+{
+    text-align:center;
+    font-weight:normal;
+}
+
+hr 
+{
+    color: #f00;
+    background: #f00;
+    margin-left: 5em;
+    width: 75%
+    height:.1em;
+}
