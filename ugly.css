@@ -7,7 +7,8 @@ body
     padding:0;
 }
 
-.changedirection {
+.changedirection 
+{
     unicode-bidi: bidi-override;
     direction: rtl;
     text-align: left;
@@ -42,12 +43,25 @@ span.imgLink
     /*margin-left: 30px;*/
     margin-right: 30px;
     
-
     text-align:left;
     vertical-align: middle;
     position: relative;
     
     overflow: hidden;
+}
+
+span.imageContent
+{
+    margin-right: 30px;
+    display: inline-block;
+    text-align:left;
+    vertical-align: middle;
+    position: relative;
+}
+
+span.imageContent div
+{
+    width: 200px;
 }
 
 a.textLink
