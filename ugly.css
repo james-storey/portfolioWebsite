@@ -39,7 +39,7 @@ div.bar
 
 span.imgLink
 {
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     margin-right: 30px;
     
 
@@ -48,6 +48,14 @@ span.imgLink
     position: relative;
     
     overflow: hidden;
+}
+
+a.textLink
+{
+    text-decoration: none; 
+    width: 120px; 
+    height: 120px;
+    padding-left: 0.5em;
 }
 
 span.imgLink img
@@ -62,7 +70,6 @@ span.imgLink a:hover img
 
 span.textIcon
 {
-
     color:#000;
     font-size: 2em;
 }
