@@ -1,0 +1,107 @@
+
+body
+{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 100%;
+    margin:0;
+    padding:0;
+}
+
+.changedirection 
+{
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+
+span.header
+{
+    font-size: 3.5em;
+    margin-left:1.5em;
+    width:90%;
+}
+span.contact
+{
+    position: absolute;
+    font-size: 1em;
+    right: 5em;
+    margin-top: 3.75em;
+    letter-spacing: 0.3em;
+}
+
+div.bar
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:70%;
+    /*overflow:hidden;*/
+    height: 150px;
+}
+
+span.imgLink
+{
+    /*margin-left: 30px;*/
+    margin-right: 30px;
+    
+    text-align:left;
+    vertical-align: middle;
+    position: relative;
+    
+    overflow: hidden;
+}
+
+span.imageContent
+{
+    margin-right: 30px;
+    display: inline-block;
+    text-align:left;
+    vertical-align: middle;
+    position: relative;
+}
+
+span.imageContent div
+{
+    width: 200px;
+    height: 100px;
+}
+
+a.textLink
+{
+    text-decoration: none; 
+    width: 120px; 
+    height: 120px;
+    padding-left: 0.5em;
+}
+
+span.imgLink img
+{
+    position:relative;
+    bottom: -0.9em;
+}
+
+span.imgLink a:hover img
+{
+
+}
+
+span.textIcon
+{
+    color:#000;
+    font-size: 2em;
+}
+
+div.content
+{
+    text-align:center;
+    font-weight:normal;
+}
+
+hr 
+{
+    color: #000;
+    background: #000;
+    margin-left: 5em;
+    margin-right: 5em;
+    width: 75%
+    height:.1em;
+}
